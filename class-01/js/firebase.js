@@ -6,12 +6,12 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-s
 
 const firebaseConfig = {
   // DO NOT UPLOAD YOUR KEYS!!!
-  apiKey: "AIzaSyAg9VGTZdcHcQWBASK73a8QHTkg3yNwh-4",
-  authDomain: "cloud-clas.firebaseapp.com",
-  projectId: "cloud-clas",
-  storageBucket: "cloud-clas.firebasestorage.app",
-  messagingSenderId: "714289528545",
-  appId: "1:714289528545:web:c121858543a264684dc1a0"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 const app = initializeApp(firebaseConfig);
