@@ -12,3 +12,4 @@ router.get('/', (req: Request, res:Reponse) => {
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
+
