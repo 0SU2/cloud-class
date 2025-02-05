@@ -1,2 +1,2 @@
 node_modules/*
-./src/config/sserviceAccountKey
+./src/config/serviceAccountKey.json
