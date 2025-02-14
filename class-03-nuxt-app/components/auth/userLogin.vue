@@ -16,7 +16,10 @@
         label="Password"
         outlined
         type="password"
-      />
+	/>
+      <v-btn text to='/register'>
+	¿No tienes cuenta?, Registrate
+	</v-btn>
     </v-card-text>
 
     <v-card-actions>

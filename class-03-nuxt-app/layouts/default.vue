@@ -6,6 +6,7 @@
       <v-alert
        v-if="$store.state.alert.show"
        :type="$store.state.alert.type"
+       class="alert-fixed"
        dismissible
       >
        {{ $store.state.alert.message }}
@@ -25,3 +26,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .alert-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  }
+ </style>
