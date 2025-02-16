@@ -3,7 +3,7 @@ import { User } from '../models/user.model'
 
 export const UserService = {
     async create(user: User): Promise<string> {
-	return UserRepository.create(user);
+        return UserRepository.create(user);
     },
     async update(id: string, user: Partial<User>): Promise<void> {
 	return UserRepository.update(id, user);

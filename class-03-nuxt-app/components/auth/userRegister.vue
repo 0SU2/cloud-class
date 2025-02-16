@@ -77,7 +77,7 @@ export default {
     methods: {
 	async register() {
 	    const response = await this.$axios.post('/users/create', this.user);
-	    if (response && reponse.data && response.data.id) {
+	    if (response && response.data && response.data.id) {
 		this.$store.commit('alert/setAlert', { message: 'Usuario Registrado Satisfactoriamente', type: 'success' });
 		this.$router.push('/');
 	    }

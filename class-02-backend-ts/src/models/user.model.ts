@@ -7,7 +7,7 @@ export interface User {
     telefono: string;
     ciudad:string;
     estado:string;
-    username:string;
+    usuario:string;
     password: string;
     rol: 'admin' | 'recursos' | 'marketing' | 'usuario';
 }

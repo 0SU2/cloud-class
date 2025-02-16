@@ -40,12 +40,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
-	'@nuxtjs/axios',
-	'@nuxtjs/auth-next',
+      '@nuxtjs/axios',
+      '@nuxtjs/auth-next',
     ],
 
     axios: {
-	baseURL: process.env.URL_BASE || 'http://localhost:3000'
+      baseURL: process.env.URL_BASE
     },
 
     auth: {

@@ -18,5 +18,5 @@ app.use((_, res) => {
 const PORT = process.env.PORT || 3020;
 
 app.listen(PORT, () => {
-    console.log('Listening in server!');
+    console.log('Listening in server! \n Current port: ' + PORT);
 });
