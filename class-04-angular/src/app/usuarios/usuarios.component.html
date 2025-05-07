@@ -1,0 +1,36 @@
+<h2>Lista de Usuarios</h2>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>A. Paterno</th>
+    <th>A. Materno</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th>Usuario</th>
+    <th>Acciones</th>
+  </tr>
+  <tr *ngFor="let usuario of usuarios">
+    <td>{{ usuario.nombre }}</td>
+    <td>{{ usuario.apaterno }}</td>
+    <td>{{ usuario.amaterno }}</td>
+    <td>{{ usuario.direccion }}</td>
+    <td>{{ usuario.telefono }}</td>
+    <td>{{ usuario.usuario }}</td>
+    <td>
+       <button (click)="openModal(usuario)">Editar</button>
+      <button (click)="deleteUsuario(usuario.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>
+
+<!-- Modal para Editar Usario -->
+<div class="modal" *ngIf="showModal">
+  <form (ngSubmit)="saveUsuario()">
+    <h3>{{ isEditing ? 'Editar Usuario' : 'Nuevo Usuario' }}</h3>
+    <input type="text" [(ngModel)]="usuario.nombre" name="nombre" placeholder="Nombre" required>
+    <input type="text" [(ngModel)]="usuario.apaterno" name="apaterno" placeholder="A. Paterno" required>
+    <input type="text" [(ngModel)]="usuario.amaterno" name="amaterno" placeholder="A. Materno" required>
+    <input type="text" [(ngModel)]="usuario.direccion" name="direccion" placeholder="Direccion" required>
+    <button type="submit">Save</button>
+  </form>
+</div>
