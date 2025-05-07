@@ -1,82 +1,255 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KANBAN</title>
+    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Repaso 1 - Inventario</title>
-  </head>
-  <body>
-    <div class="container mt-5">
-      <h2 class="text-center">Gestion del Inventario</h2>
-      <div class="row">
-        <div class="col">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+           <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="position-sticky">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="/img/logo.png" class="me-2" width="180px" height="80px">
+                    </div>
+                    <ul class="nav flex-column" id="sidebar">
+                        <li class="nav-item mb-4">
+                            <a class="nav-link active" href="#">
+                                <i class="fa fa-home"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mb-4">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-inbox"></i>
+                                Inventory
+                            </a>
+                        </li>
+                        <li class="nav-item mb-4">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-bar-chart"></i>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item mb-4">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-user-circle"></i>
+                                Suppliers
+                            </a>
+                        </li>
+                        <li class="nav-item mb-4">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-archive"></i>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item mb-5">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-list-alt"></i>
+                                Manage Store
+                            </a>
+                        </li>
+                        <li class="nav-item mb-4 mt-5">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text" href="#">
+                                <i class="fa fa-sign-out"></i>
+                                Log Out
+                            </a>
+                        </li>
+                    </ul>
 
-          <form id="addProductForm" class="mt-4">
-            <div class="mb-3">
-              <label 
-                for="productName" 
-                class="form-label"
-              >
-                Nombre del Producto
-              </label>
-              <input 
-                type="text" 
-                id="productName"
-                required
-                placeholder="Nombre del producto"
-                class="form-control"
-              >
+                </div>
+           </nav>
+
+           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!-- barra de busqueda-->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="header">
+                <div class="input-group w-50">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <input type="text" class="form-control" placeholder= "Search product, supplier, order" id="search" aria-label="Search" aria-describedby="button-addon2">
+                </div>
+                <div class="fa-bell ">
+                    <i class="fa fa-bell"></i>
+                </div>
+                <div class="fa-user-circle">
+                    <i class="fa fa-user"></i>
+                </div>
             </div>
-            <div class="mb-3">
-              <label 
-                for="productStock" 
-                class="form-label"
-              >
-                Cantidad Inicial
-              </label>
-              <input 
-                type="number" 
-                id="productStock"
-                required
-                placeholder="Cantidad Inicial"
-                class="form-control"
-              >
+            <!--Trajetas de consulatas-->
+        <div class="bg-light">
+            <div class="container-fluid mt-4" id="overall">
+                <h4 class="txt-gray mb-4">Overall Inventory</h4>
+                <div class="row mb-4 ">
+                    <div class="col-md-3">
+                        <div class="bg-white card mb-2 mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Categories</h5>
+                                <p class="card-text fs-4" id="Categories">14</p>
+                                <small class="txt-graylight">Last 7 days</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="bg-white card mb-2 mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning">Total Products</h5>
+                                <p class="card-text fs-4 txt-gray" id="total-products">868</p>
+                                <small class="txt-graylight">Last 7 days</small>
+                                <p class="card-text fs-4 txt-gray" id="revenue">₹25000</p>
+                                <small class="txt-graylight"> Revenue</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="bg-white card mb-2 mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title txt-purple">Top Selling</h5>
+                                <p class="card-text fs-4" id="top-selling">5</p>
+                                <small class="txt-graylight">Last 7 days</small>
+                                <p class="card-text fs-4" id="cost">₹2500</p>
+                                <small>Cost</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class=" card bg-white mb-2 mt-4">
+                            <div class="card-body ">
+                                <h5 class="card-title text-danger">Low Stocks</h5>
+                                <p class="card-text fs-4 txt-gray" id="ordered">12</p>
+                                <small class="txt-graylight">Order</small>
+                                <p class="card-text fs-4 txt-gray" id="not-stock">2</p>
+                                <small class="txt-graylight">Not in stock</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <button type="submit" class="btn btn-primary w-100">Agregar Producto</button>
+<!--tabla de roductos-->
+            <div class="card bg-white" id="products">
+                <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                    <h5 class="mb-0">Products</h5>
+                        <div>
+                            <button class="btn btn-primary btn-sm me-4" data-bs-toggle="modal" data-bs-target="#newProductModal" id="Addproduct">Add Product</button>
+                            <button class="btn btn-outline-secondary btn-sm me-4" id="filter">
+                                <i class="fa fa-filter"></i>
+                                Filters</button>
+                            <button class="btn btn-outline-secondary btn-sm me-4">Download all</button>
+                        </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-hover" id="productTable">
+                        <thead>
+                            <tr>
+                                <th scope="col" id="product">Products</th>
+                                <th scope="col" id="Buy-price">Buying Price</th>
+                                <th scope="col" id="Quantity">Quantity</th>
+                                <th scope="col" id="Threshold">Threshold Value</th>
+                                <th scope="col" id="date-ex">Expiry Date</th>
+                                <th scope="col" id="Availability">Availability</th>
+                                <th scope="col" id="edit">
+                                    <i class="fa fa-edit"></i>
+                                    Edit
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-outline-secondary btn-sm" id="Previous">Previous</button>
+                        <button class="btn btn-outline-secondary btn-sm" id="Next">Next</button>
+                    </div>
+                </div>
+        </div>
+
+            </main>
+        </div>
+
+    </div>
+
+<!-- Modal del formulario-->
+<div class="modal fade" id="newProductModal" tabindex="-1" aria-labelledby="newProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newProductModalLabel">New Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-4 text-center">
+            <div class="border border-2 border-dashed rounded p-4 d-inline-block">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" placeholder="Value" id="file-blob">
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Url" id="file-url">
+              </div>
+            </div>
+          </div>
+
+<!-- Formulario del modal -->
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Product Name</label>
+                <input type="text" class="form-control" placeholder="Enter product name" id="product-name-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Product ID</label>
+                <input type="text" class="form-control" placeholder="Enter product ID" id="product-id-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Category</label>
+                <input type="text" class="form-control" placeholder="Select product category" id="product-category-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Buying Price</label>
+                <input type="text" class="form-control" placeholder="Enter buying price" id="product-buying-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Quantity</label>
+                <input type="text" class="form-control" placeholder="Enter product quantity" id="product-quantity-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Unit</label>
+                <input type="text" class="form-control" placeholder="Enter product unit" id="product-unit-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Expiry Date</label>
+                <input type="text" class="form-control" placeholder="Enter expiry date" id="product-expiry-modal">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Threshold Value</label>
+                <input type="text" class="form-control" placeholder="Enter threshold value" id="product-threshold-modal">
+              </div>
+            </div>
           </form>
-
         </div>
-        <div class="col">
-          <table class="table">
-            <thead class="success">
-              <tr>
-                <th>Nombre</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="productTable"></tbody>
-          </table>
 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" id="discard-modal" data-bs-dismiss="modal">Discard</button>
+          <button type="button" class="btn btn-primary" id="add-product-modal">Add Product</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col"></div>
-        <div class="col-md-auto justify-content-md-center">
-          <button id="logoutButton" class="btn btn-danger mb-4">
-            Cerrar Session
-          </button>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./js/app.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="./js/inventory.js" type="module"></script>
-  </body>
+</body >
 </html>

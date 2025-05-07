@@ -1,0 +1,9 @@
+.dashboard-container{
+  display: flex;
+  height: 100vh;
+}
+.dashboard-container {
+  flex-grow: 1;
+  padding: 1rem;
+  background-color: #f2f2f2;
+}
